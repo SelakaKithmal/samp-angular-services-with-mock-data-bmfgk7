@@ -1,0 +1,170 @@
+/* https://coursetro.com/posts/code/116/Create-your-own-Angular-5-Material-Theme */
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+/*
+mat-palette accepts 3 other optional arguments:
+Default Color
+Lighter Color
+Darker Color
+*/
+
+$custom-primary: mat-palette($mat-blue, 600);
+$custom-accent:  mat-palette($mat-blue, 200);
+$custom-warn:    mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+// Dark Theme:
+// $custom-theme: mat-dark-theme($custom-primary, $custom-accent);
+
+@include angular-material-theme($custom-theme);
+
+
+ .playbook {
+  // border:red solid;
+  // height: 200px;
+  // overflow:auto !important;
+ }
+
+// TODO: Draw Lines from nodes: https://jsfiddle.net/bbcfk164/512/
+// https://forums.asp.net/t/2104448.aspx?How+to+connect+two+div+dynamically+by+connecting+line+
+
+ul.nodes2 {
+  margin:0;
+  padding:0;
+
+  aside {
+
+  }
+
+  &:hover {
+    
+    ul {
+      li {
+        // counter balance
+        section {
+
+          ul {
+          
+            li {
+              
+              // Nodes
+              // TODO: Need to create drop animation: https://codepen.io/michaelbowlin/pen/OvdWPJ?editors=1010
+              span[class^="node-"] {
+                //transform:scale(1.2);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+  }
+  
+  ul {
+
+    li {
+
+      position: relative;
+          
+            .count {
+              height: 29px;
+              width: 65px;
+              background: rgba(0,0,0,.2);
+              text-align: center;
+              padding: 11px 0 0 0;
+              color: white;
+              font-size: 1.2rem;
+            }
+
+       section {
+
+         ul {
+
+          li {
+
+              height: 40px;
+              width: 100%;
+              margin: 1px 0;
+              background: #ccc;
+              list-style-type:none;
+              transition: 0.3s ease-out;
+          
+              &:hover {
+                 background:#ddd;
+                
+                
+                li {
+   
+                  
+                }
+                
+              }
+
+            ul {
+              margin: 0;
+              padding: 0;
+              
+                  li {
+
+                  }
+
+
+            }
+
+            div {
+
+            }
+
+            @for $i from 1 through 200 {
+
+                $gradientStart:#00f;
+                $gradientEnd:#f00;
+
+                //$gradientStart:#2a7cbb;
+                //$gradientEnd:#18cab9;
+
+                //.gradient {
+                $color-1: $gradientStart;
+                $color-2: $gradientEnd;
+                $steps: 8;
+              
+              .node-#{$i} {
+              
+                position: absolute;
+                top:0;
+                left:0;
+                height:8px;
+                width:8px;
+                margin: 14px 0 0 0;
+                margin-left: 40px * $i;
+                background:none;
+                border: 4px solid cyan;
+                border-radius:100%;
+              }
+                
+
+                @for $i from 0 to $steps {
+                  & .node-#{$i} {
+                        border-color: mix($color-1, $color-2, percentage($i / ($steps - 1)));
+                    }
+                  }
+                //}/*end gradient*/
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
